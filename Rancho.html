@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Rancho - Comidas para llevar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Satisfy&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8B4513',secondary:'#D2691E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Montserrat', sans-serif;
+}
+.font-satisfy {
+font-family: 'Satisfy', cursive;
+}
+.badge-experience {
+position: relative;
+z-index: 1;
+}
+.badge-experience::before {
+content: "";
+position: absolute;
+width: 100%;
+height: 100%;
+background-color: #8B4513;
+border-radius: 50%;
+transform: rotate(-15deg);
+z-index: -1;
+}
+.chalkboard {
+background-color: #2D3436;
+background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+.chalk-text {
+font-family: 'Satisfy', cursive;
+color: rgba(255, 255, 255, 0.9);
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #8B4513;
+border-radius: 4px;
+background-color: white;
+position: relative;
+cursor: pointer;
+}
+.custom-checkbox:checked {
+background-color: #8B4513;
+}
+.custom-checkbox:checked::after {
+content: "";
+position: absolute;
+width: 0.5rem;
+height: 0.25rem;
+border-left: 2px solid white;
+border-bottom: 2px solid white;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -70%) rotate(-45deg);
+}
+.custom-radio {
+appearance: none;
+-webkit-appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #8B4513;
+border-radius: 50%;
+background-color: white;
+position: relative;
+cursor: pointer;
+}
+.custom-radio:checked {
+border-color: #8B4513;
+}
+.custom-radio:checked::after {
+content: "";
+position: absolute;
+width: 0.75rem;
+height: 0.75rem;
+background-color: #8B4513;
+border-radius: 50%;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 3rem;
+height: 1.5rem;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 1.1rem;
+width: 1.1rem;
+left: 0.2rem;
+bottom: 0.2rem;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #8B4513;
+}
+input:checked + .slider:before {
+transform: translateX(1.5rem);
+}
+.custom-range {
+-webkit-appearance: none;
+width: 100%;
+height: 8px;
+background: #e2e8f0;
+border-radius: 5px;
+outline: none;
+}
+.custom-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+background: #8B4513;
+border-radius: 50%;
+cursor: pointer;
+}
+.custom-range::-moz-range-thumb {
+width: 20px;
+height: 20px;
+background: #8B4513;
+border-radius: 50%;
+cursor: pointer;
+border: none;
+}
+</style>
+</head>
+<body class="bg-[#FFFAF0]">
+<!-- Header -->
+<header class="bg-white shadow-md">
+<div class="container mx-auto px-4 py-3">
+<div class="flex justify-between items-center">
+<!-- Logo y Navegación -->
+<div class="flex items-center">
+<div class="flex items-center">
+<h1 class="font-['Pacifico'] text-primary text-xl">El Rancho</h1>
+<!-- Badge 19 años -->
+<div class="hidden md:flex badge-experience w-[88px] h-[88px] rounded-full bg-primary flex-col items-center justify-center text-white rotate-12 ml-4">
+<span class="text-xl font-bold leading-none">19</span>
+<span class="text-[11px] leading-tight">años</span>
+<span class="text-[11px] leading-tight">de experiencia</span>
+</div>
+</div>
+<!-- Navegación Desktop -->
+<nav class="hidden md:flex space-x-6 ml-8">
+<a href="#inicio" class="text-gray-700 hover:text-primary font-medium transition-colors">Inicio</a>
+<a href="#menu" class="text-gray-700 hover:text-primary font-medium transition-colors">Menú</a>
+<a href="#diario" class="text-gray-700 hover:text-primary font-medium transition-colors">Platos del Día</a>
+<a href="#info" class="text-gray-700 hover:text-primary font-medium transition-colors">Información</a>
+<a href="#contacto" class="text-gray-700 hover:text-primary font-medium transition-colors">Contacto</a>
+</nav>
+</div>
+<!-- Contacto y CTA -->
+<div class="flex items-center space-x-4">
+<div class="hidden md:block text-right">
+<p class="text-gray-700"><i class="ri-phone-line mr-1"></i>  968  15  31  70</p>
+<p class="text-gray-700 text-sm"><i class="ri-map-pin-line mr-1"></i> Avd Doctor Meca 44,Puerto de Mazarrón</p>
+</div>
+<a 
+  href="tel:+34968153170"
+  role="button"
+  class="bg-primary text-white px-4 py-2 rounded-button font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap flex items-center"
+>
+  <i class="ri-bike-line mr-2"></i> Pedir a Domicilio
+</a>
+
+<!-- Menú Móvil -->
+<button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="menuButton">
+<i class="ri-menu-line text-2xl"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Menú Móvil Desplegable -->
+<nav id="mobileMenu" class="hidden md:hidden py-4 space-y-3">
+<a href="#inicio" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Inicio</a>
+<a href="#menu" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Menú</a>
+<a href="#diario" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Platos del Día</a>
+<a href="#info" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Información</a>
+<a href="#contacto" class="block text-gray-700 hover:text-primary font-medium py-2 transition-colors">Contacto</a>
+<div class="py-2">
+<p class="text-gray-700"><i class="ri-phone-line mr-1"></i> 968  15  31  70</p>
+<p class="text-gray-700 text-sm"><i class="ri-map-pin-line mr-1"></i> Avd Doctor Meca 44,Puerto de Mazarrón</p>
+</div>
+<!-- Badge móvil -->
+<div class="flex items-center space-x-2 py-2">
+<div class="badge-experience w-16 h-16 rounded-full bg-primary flex-col items-center justify-center text-white rotate-12 flex">
+<span class="text-sm font-bold leading-none">19</span>
+<span class="text-[10px] leading-tight">años</span>
+<span class="text-[10px] leading-tight">de experiencia</span>
+</div>
+<span class="text-gray-700 text-sm">en sabor</span>
+</div>
+</nav>
+</header>
+<!-- Hero Section -->
+<section id="inicio" class="relative h-[500px] md:h-[600px] overflow-hidden" style="background-image: url('https://static.readdy.ai/image/e807f5ae4491ddd29d257a0cfd0abef5/ded3c05a99a5e0dca40f50ecb28361c4.png'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-black bg-opacity-50"></div>
+<div class="container mx-auto px-4 h-full flex items-center relative z-10">
+<div class="w-full md:w-1/2 text-white">
+<h2 class="text-4xl md:text-5xl font-bold mb-4">Auténtica Cocina Tradicional</h2>
+<p class="text-xl mb-6 font-satisfy">Desde 2006, cocinamos comida casera de verdad, hecha por nosotros cada día.</p>
+<button class="bg-primary text-white px-6 py-3 rounded-button font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap">
+Ver Menú Completo
+</button>
+</div>
+</div>
+<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+<i class="ri-arrow-down-line text-2xl"></i>
+</div>
+</section>
+<!-- Platos del Día - Pizarra Digital -->
+<section id="diario" class="py-16 bg-[#F5F5DC]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-2">Platos del Día</h2>
+<p id="update-date" class="text-gray-600">Actualizado: …</p>
+</div>
+<div class="chalkboard rounded-lg shadow-xl max-w-5xl mx-auto p-8 md:p-12">
+<h3 class="chalk-text text-center text-4xl md:text-5xl mb-12"><h3 class="chalk-text text-center text-4xl md:text-5xl mb-12">🍳 Especiales de Hoy</h3>
+</h3>
+<div id="daily-menu" class="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-8">
+  <!-- El script inyectará aquí las filas -->
+</div>
+<div class="mt-8 text-center">
+<p class="chalk-text text-2xl">🍰 ¡Pregunta por nuestro postre especial del día! 🍮</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Catálogo de Productos -->
+<section id="menu" class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Nuestra Carta</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Descubre nuestra variedad de platos preparados con los mejores ingredientes y recetas tradicionales</p>
+    </div>
+    
+    <!-- Categorías Tabs -->
+    <div class="flex flex-wrap justify-center mb-8 border-b border-gray-200">
+      <button class="category-tab px-6 py-3 text-gray-500 font-medium border-b-2 border-transparent hover:text-primary transition-colors" data-category="acompanantes">
+        Acompañantes
+      </button>
+      <button class="category-tab px-6 py-3 text-gray-500 font-medium border-b-2 border-transparent hover:text-primary transition-colors" data-category="bocadillos">
+        Bocadillos
+      </button>
+      <button class="category-tab px-6 py-3 text-gray-500 font-medium border-b-2 border-transparent hover:text-primary transition-colors" data-category="hamburguesas">
+        Hamburguesas
+      </button>
+      <button class="category-tab px-6 py-3 text-gray-500 font-medium border-b-2 border-transparent hover:text-primary transition-colors" data-category="kebabs">
+        Kebabs
+      </button>
+      <button class="category-tab px-6 py-3 text-primary font-medium border-b-2 border-primary hover:text-primary-dark transition-colors" data-category="pizzas">
+        Pizzas
+      </button>
+      <button class="category-tab px-6 py-3 text-gray-500 font-medium border-b-2 border-transparent hover:text-primary transition-colors" data-category="perritos">
+        Perritos Calientes
+      </button>
+      <button class="category-tab px-6 py-3 text-gray-500 font-medium border-b-2 border-transparent hover:text-primary transition-colors" data-category="sandwiches">
+        Sandwiches
+      </button>
+    </div>
+    <!-- Productos Grid -->
+ <!-- Productos Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="product-grid">
+ <!-- Acompañantes -->
+<div class="col-span-full bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="acompanantes">
+  <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20collage%20of%20various%20side%20dishes%20including%20nachos%2C%20french%20fries%2C%20onion%20rings%2C%20chicken%20wings%2C%20and%20salads%20arranged%20on%20a%20rustic%20wooden%20table.%20The%20scene%20shows%20different%20textures%20and%20colors%20of%20appetizers%20with%20professional%20lighting%20and%20styling.%20Each%20dish%20is%20perfectly%20presented%20with%20garnishes%20and%20sauces&width=1200&height=400&seq=acc_hero&orientation=landscape" alt="Nuestros Acompañantes" class="w-full h-64 object-cover object-top">
+  <div class="p-8">
+    <h3 class="text-3xl font-semibold text-gray-800 mb-8">Acompañantes</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Columna 1 -->
+      <div class="space-y-8">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h4 class="text-xl font-semibold text-gray-800 mb-4">Nachos y Ensaladas</h4>
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Ración de Nachos</p>
+                <p class="text-sm text-gray-600">Normal / Grande</p>
+              </div>
+              <p class="font-semibold text-primary">4,00 € / 5,00 €</p>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Ensalada Mixta</p>
+              </div>
+              <p class="font-semibold text-primary">5,00 €</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h4 class="text-xl font-semibold text-gray-800 mb-4">Patatas</h4>
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Patatas Gratinadas</p>
+                <p class="text-sm text-gray-600">Normal / Grande</p>
+              </div>
+              <p class="font-semibold text-primary">5,00 € / 6,00 €</p>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Patatas Fritas</p>
+                <p class="text-sm text-gray-600">Normal / Grande</p>
+              </div>
+              <p class="font-semibold text-primary">4,00 € / 4,50 €</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Columna 2 -->
+      <div class="space-y-8">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h4 class="text-xl font-semibold text-gray-800 mb-4">Especialidades de Pollo</h4>
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Bola Crocanti</p>
+                <p class="text-sm text-gray-600">15 unidades</p>
+              </div>
+              <p class="font-semibold text-primary">4,00 €</p>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Alitas de Pollo</p>
+                <p class="text-sm text-gray-600">4 uds / 8 uds</p>
+              </div>
+              <p class="font-semibold text-primary">4,50 € / 8,50 €</p>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Nuggets de Pollo</p>
+              </div>
+              <p class="font-semibold text-primary">3,50 €</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Columna 3 -->
+      <div class="space-y-8">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h4 class="text-xl font-semibold text-gray-800 mb-4">Complementos</h4>
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Jalapeños</p>
+                <p class="text-sm text-gray-600">6 uds / 9 uds</p>
+              </div>
+              <p class="font-semibold text-primary">3,50 € / 4,50 €</p>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Queso</p>
+                <p class="text-sm text-gray-600">6 uds / 9 uds</p>
+              </div>
+              <p class="font-semibold text-primary">3,50 € / 4,50 €</p>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Aros de Cebolla</p>
+                <p class="text-sm text-gray-600">6 unidades</p>
+              </div>
+              <p class="font-semibold text-primary">3,50 €</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h4 class="text-xl font-semibold text-gray-800 mb-4">Especialidades</h4>
+          <div class="space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Cajun</p>
+                <p class="text-sm text-gray-600">7 tiras de pechuga con sazonado Cajun</p>
+              </div>
+              <p class="font-semibold text-primary">5,00 €</p>
+            </div>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium text-gray-800">Kentaki</p>
+                <p class="text-sm text-gray-600">8 solomillos de pollo estilo Kentucky</p>
+              </div>
+              <p class="font-semibold text-primary">6,00 €</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div> <!-- Cierra grid -->
+  </div> <!-- Cierra p-8 -->
+</div> <!-- Cierra product-card -->
+      <!-- Bocadillos -->
+      <div class="col-span-full bg-white rounded-lg shadow-md overflow-hidden product-card hidden" data-category="bocadillos">
+<img src="https://readdy.ai/api/search-image?query=A%20beautiful%20display%20of%20various%20Spanish%20sandwiches%20%28bocadillos%29%20arranged%20on%20a%20rustic%20wooden%20table.%20The%20scene%20shows%20both%20hot%20and%20cold%20sandwiches%20with%20fresh%20ingredients%2C%20meats%2C%20and%20vegetables.%20Professional%20food%20photography%20with%20warm%20lighting%20highlighting%20the%20textures%20of%20the%20bread%20and%20fillings&width=1200&height=400&seq=boc_hero&orientation=landscape" alt="Nuestros Bocadillos" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Bocadillos Calientes -->
+<div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-6">BOCADILLOS CALIENTES</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Beicon y Queso</span>
+<span class="font-semibold text-primary">5.50€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Catalana</span>
+<span class="font-semibold text-primary">5.90€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Catalana con Queso</span>
+<span class="font-semibold text-primary">6.50€</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-700">Fernando</span>
+<p class="text-sm text-gray-500">Salchicha, bacon, tomate rallado, queso y mahonesa</p>
+</div>
+<span class="font-semibold text-primary">6.90€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Hamburguesa, Tomate, Lechuga y Cebolla</span>
+<span class="font-semibold text-primary">5.90€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Hamburguesa, Queso, Tomate, Cebolla y Lechuga</span>
+<span class="font-semibold text-primary">6.50€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Jamón Serrano a la Plancha, Huevo Frito y Tomate</span>
+<span class="font-semibold text-primary">7.50€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Lomo</span>
+<span class="font-semibold text-primary">5.90€</span>
+</div>
+</div>
+</div>
+<!-- Bocadillos Fríos -->
+<div>
+<h3 class="text-2xl font-semibold text-gray-800 mb-6">BOCADILLOS FRÍOS</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Atún</span>
+<span class="font-semibold text-primary">4.90€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Jamón Serrano</span>
+<span class="font-semibold text-primary">5.50€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Jamón Serrano, Tomate y Queso</span>
+<span class="font-semibold text-primary">6.50€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Jamón York y Queso</span>
+<span class="font-semibold text-primary">4.90€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Queso Fresco, Anchoas y Tomate</span>
+<span class="font-semibold text-primary">5.90€</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<span class="text-gray-700">Vegetal con Huevo</span>
+<p class="text-sm text-gray-500">Mahonesa, atún, maíz, lechuga, tomate, espárrago y huevo duro</p>
+</div>
+<span class="font-semibold text-primary">6.90€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Vegetal con Pollo</span>
+<span class="font-semibold text-primary">6.90€</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+ <!-- Perritos Calientes -->
+      <div class="col-span-full bg-white rounded-lg shadow-md overflow-hidden product-card hidden" data-category="perritos">
+<img src="https://readdy.ai/api/search-image?query=Gourmet%20hot%20dogs%20with%20various%20toppings%20including%20melted%20cheese%2C%20caramelized%20onions%2C%20and%20special%20sauces%2C%20arranged%20on%20a%20rustic%20wooden%20serving%20board.%20The%20hot%20dogs%20look%20perfectly%20grilled%20with%20golden%20buns.%20Professional%20food%20photography%20with%20warm%20lighting%20highlighting%20the%20textures&width=1200&height=400&seq=hot_hero&orientation=landscape" alt="Nuestros Perritos Calientes" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-2xl font-semibold text-gray-800 mb-6">Perritos Calientes</h3>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Perrito Caliente con Salsa</h4>
+<p class="text-gray-600 text-sm">Salchicha con salsa especial</p>
+</div>
+<span class="font-semibold text-primary">3,00 €</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Perrito Caliente Completo</h4>
+<p class="text-gray-600 text-sm">Con queso, cebolla y salsa</p>
+</div>
+<span class="font-semibold text-primary">3,50 €</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+ <!-- Sandwiches -->
+      <div class="col-span-full bg-white rounded-lg shadow-md overflow-hidden product-card hidden" data-category="sandwiches">
+<img src="https://readdy.ai/api/search-image?query=A%20variety%20of%20gourmet%20sandwiches%20cut%20diagonally%20and%20arranged%20on%20a%20wooden%20board%2C%20showing%20different%20fillings%20including%20tuna%2C%20ham%2C%20cheese%2C%20and%20fresh%20vegetables.%20The%20sandwiches%20look%20fresh%20and%20appetizing%20with%20quality%20ingredients.%20Professional%20food%20photography%20with%20natural%20lighting&width=1200&height=400&seq=sand_hero&orientation=landscape" alt="Nuestros Sandwiches" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-2xl font-semibold text-gray-800 mb-6">Sándwiches</h3>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Marinero</h4>
+<p class="text-gray-600 text-sm">Atún, mahonesa y pimiento</p>
+</div>
+<span class="font-semibold text-primary">4,50 €</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Megamix</h4>
+<p class="text-gray-600 text-sm">Mahonesa, lechuga, tomate, doble york, queso y jamón serrano</p>
+</div>
+<span class="font-semibold text-primary">6,50 €</span>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Normal</h4>
+<p class="text-gray-600 text-sm">Jamón york y queso</p>
+</div>
+<span class="font-semibold text-primary">4,00 €</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Serrano</h4>
+<p class="text-gray-600 text-sm">Jamón serrano y queso</p>
+</div>
+<span class="font-semibold text-primary">5,00 €</span>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-lg font-semibold text-gray-800">Vegetal</h4>
+<p class="text-gray-600 text-sm">Lechuga, atún, mahonesa, espárragos, tomate y maíz</p>
+</div>
+<span class="font-semibold text-primary">5,50 €</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pizzas -->
+<div class="col-span-full bg-white rounded-lg shadow-md overflow-hidden product-card" data-category="pizzas">
+  <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20artisanal%20pizza%20being%20prepared%20in%20a%20traditional%20wood-fired%20oven.%20The%20scene%20shows%20a%20rustic%20kitchen%20with%20warm%20lighting%2C%20fresh%20ingredients%2C%20and%20the%20pizza%20maker%20crafting%20the%20perfect%20pizza.%20Professional%20food%20photography%20with%20dramatic%20lighting&width=1200&height=400&seq=piz_hero&orientation=landscape" alt="Nuestras Pizzas" class="w-full h-64 object-cover object-top">
+  <div class="p-6">
+    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Nuestras Pizzas</h3>
+    <div class="flex flex-wrap items-center justify-end gap-4 mb-6 text-gray-700 text-sm md:text-base">
+      <div class="flex items-center gap-1">
+        <span class="font-medium">Ø 32 cm</span>
+        <span class="text-primary font-semibold">10 €</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <span class="font-medium">Ø 40 cm</span>
+        <span class="text-primary font-semibold">16 €</span>
+      </div>
+      <div class="flex items-center gap-1">
+        <span class="font-medium">Ø 45 cm</span>
+        <span class="text-primary font-semibold">19 €</span>
+      </div>
+    </div>
+    <div class="grid gap-4">
+      <!-- Pizza 4 Quesos -->
+      <div class="border-b border-gray-100 pb-4">
+        <div class="flex justify-between items-start">
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800">4 Quesos</h4>
+            <p class="text-gray-600 text-sm">Selección de 4 quesos, tomate y orégano</p>
+          </div>
+        </div>
+      </div>
+      <!-- Pizza Alemana -->
+      <div class="border-b border-gray-100 pb-4">
+        <div class="flex justify-between items-start">
+          <div>
+            <h4 class="text-lg font-semibold text-gray-800">Alemana</h4>
+            <p class="text-gray-600 text-sm">Tomate, queso, salchichas alemanas y mostaza</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- Hamburguesas -->
+      <div class="col-span-full bg-white rounded-lg shadow-md overflow-hidden product-card hidden" data-category="hamburguesas">
+<img src="https://readdy.ai/api/search-image?query=A%20variety%20of%20gourmet%20burgers%20with%20different%20toppings%2C%20both%20beef%20and%20chicken%20options%2C%20displayed%20on%20a%20rustic%20wooden%20table.%20The%20scene%20shows%20fresh%20ingredients%2C%20melted%20cheese%2C%20and%20crisp%20vegetables.%20Professional%20food%20photography%20with%20warm%20lighting&width=1200&height=400&seq=ham_hero&orientation=landscape" alt="Nuestras Hamburguesas" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-2xl font-semibold text-gray-800 mb-4">Hamburguesas</h3>
+<p class="text-gray-600 mb-6">Carne de Ternera o de Pollo</p>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Normal -->
+<div>
+<h4 class="text-xl font-semibold text-gray-800 mb-4">NORMAL</h4>
+<p class="text-gray-600 mb-2">Tomate, cebolla y lechuga</p>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Ternera</span>
+<span class="font-semibold text-primary">8,50 €</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-gray-700">Pollo</span>
+<span class="font-semibold text-primary">7,50 €</span>
+</div>
+</div>
+<!-- Cheese -->
+<div>
+<h4 class="text-xl font-semibold text-gray-800 mb-4">CHEESE</h4>
+<p class="text-gray-600 mb-2">Queso, tomate, cebolla y lechuga</p>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Ternera</span>
+<span class="font-semibold text-primary">9,50 €</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<span class="text-gray-700">Pollo</span>
+<span class="font-semibold text-primary">8,50 €</span>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 bg-primary bg-opacity-10 rounded-lg">
+<p class="text-primary font-medium">COMBO: Haz tu menú completo añadiendo patatas y refresco por 5,00 € más</p>
+</div>
+</div>
+</div>
+  <!-- Kebabs -->
+      <div class="col-span-full bg-white rounded-lg shadow-md overflow-hidden product-card hidden" data-category="kebabs">
+<img src="https://readdy.ai/api/search-image?query=A%20professional%20food%20photography%20collage%20showing%20two%20types%20of%20kebabs%20side%20by%20side.%20On%20the%20left%2C%20a%20perfectly%20wrapped%20durum%20kebab%20with%20grilled%20meat%20and%20fresh%20vegetables.%20On%20the%20right%2C%20an%20open%20pita%20bread%20kebab%20filled%20with%20meat%2C%20fresh%20vegetables%20and%20sauce.%20Both%20presented%20on%20rustic%20wooden%20boards%20with%20garnishes.%20The%20lighting%20is%20warm%20and%20inviting%2C%20highlighting%20the%20textures%20and%20colors%20of%20the%20ingredients&width=1200&height=400&seq=keb_hero&orientation=landscape" alt="Nuestros Kebabs" class="w-full h-64 object-cover object-top">
+<div class="p-6">
+<h3 class="text-2xl font-semibold text-gray-800 mb-4">Kebab</h3>
+<p class="text-gray-600 mb-6">Ingredientes: Lechuga, tomate, maíz, salsa kebab</p>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Dürum -->
+<div>
+<h4 class="text-xl font-semibold text-gray-800 mb-4">DÜRUM</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Pollo</span>
+<span class="font-semibold text-primary">5,50 €</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Ternera</span>
+<span class="font-semibold text-primary">5,50 €</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Mixto</span>
+<span class="font-semibold text-primary">6,00 €</span>
+</div>
+</div>
+</div>
+<!-- Pan Pita -->
+<div>
+<h4 class="text-xl font-semibold text-gray-800 mb-4">PAN PITA</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Pollo</span>
+<span class="font-semibold text-primary">5,50 €</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Ternera</span>
+<span class="font-semibold text-primary">5,50 €</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-700">Mixto</span>
+<span class="font-semibold text-primary">6,00 €</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 p-4 bg-gray-50 rounded-lg">
+<p class="text-gray-700 font-medium">NOTA: Solo carne y salsa tiene un incremento de 1,00 € </p>
+</div>
+</div>
+</div>
+  </div>
+  </div>
+</section>
+<!-- Información Útil -->
+<section id="info" class="py-16 bg-[#F5F5DC]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-2">Información Útil</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Todo lo que necesitas saber para disfrutar de la mejor experiencia en El Rancho</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Horarios -->
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+<i class="ri-time-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-800 mb-4">Horarios de Atención</h3>
+<ul class="space-y-2">
+<li class="flex justify-between">
+<span class="text-gray-600">Lunes - Jueves</span>
+<span class="font-medium">12:00 - 22:00</span>
+</li>
+<li class="flex justify-between">
+<span class="text-gray-600">Viernes - Sábado</span>
+<span class="font-medium">12:00 - 00:00</span>
+</li>
+<li class="flex justify-between">
+<span class="text-gray-600">Domingo</span>
+<span class="font-medium">12:00 - 20:00</span>
+</li>
+<li class="flex justify-between text-primary font-medium mt-4">
+<span>Cocina cierra</span>
+<span>1 hora antes</span>
+</li>
+</ul>
+</div>
+<!-- Ubicación -->
+<div class="bg-white rounded-lg shadow-md p-6">
+  <div class="flex items-center gap-4 mb-4">
+    <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+      <i class="ri-map-pin-line text-primary text-2xl"></i>
+    </div>
+    <h3 class="text-xl font-semibold text-gray-800">Nuestra Ubicación</h3>
+  </div>
+<div class="rounded overflow-hidden mb-4 aspect-video">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6324.929054625961!2d-1.2635286235941345!3d37.567677824061725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd64a116486d3d25%3A0x3be807a958cbd810!2srestaurante%20rancho!5e0!3m2!1sen!2ses!4v1746029572914!5m2!1sen!2ses" 
+    width="100%" 
+    height="100%" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+<p class="text-gray-600 mb-2">Avd Doctor Meca 44, El Puerto de Mazarrón, Spain</p>
+<a
+  href="https://www.google.com/maps/dir/?api=1&destination=37.5676778,-1.2635286"
+  target="_blank"
+  rel="noopener"
+  class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap w-full flex items-center justify-center"
+>
+  <i class="ri-route-line mr-2"></i> Cómo Llegar
+</a>
+</div>
+</div>
+</div>
+</section>
+<section id="info-extra" class="py-16 bg-[#F5F5DC]">
+  <div class="container mx-auto px-4">
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-12 pb-6">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<!-- Logo y Descripción -->
+<div>
+<h3 class="font-['Pacifico'] text-2xl mb-4">El Rancho</h3>
+<p class="text-gray-400 mb-4">19 años ofreciendo la mejor experiencia gastronómica con sabores auténticos y servicio excepcional.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+<i class="ri-instagram-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+<i class="ri-twitter-x-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors">
+<i class="ri-whatsapp-fill"></i>
+</a>
+</div>
+</div>
+<!-- Enlaces Rápidos -->
+<div>
+<h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+<ul class="space-y-2">
+<li><a href="#inicio" class="text-gray-400 hover:text-white transition-colors">Inicio</a></li>
+<li><a href="#menu" class="text-gray-400 hover:text-white transition-colors">Menú</a></li>
+<li><a href="#diario" class="text-gray-400 hover:text-white transition-colors">Platos del Día</a></li>
+<li><a href="#info" class="text-gray-400 hover:text-white transition-colors">Información</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Eventos</a></li>
+</ul>
+</div>
+<!-- Contacto -->
+<div>
+<h4 class="text-lg font-semibold mb-4">Contacto</h4>
+<ul class="space-y-3">
+<li class="flex items-start">
+<i class="ri-map-pin-line mr-3 mt-1"></i>
+<span class="text-gray-400">Avd Doctor Meca 44, El Puerto de Mazarrón, Spain<br></span>
+</li>
+<li class="flex items-center">
+<i class="ri-phone-line mr-3"></i>
+<span class="text-gray-400"> 968  15  31  70</span>
+</li>
+<li class="flex items-center">
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
+<div class="flex flex-wrap justify-center gap-4 mb-4">
+<a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+<span>|</span>
+<a href="#" class="hover:text-white transition-colors">Política de Privacidad</a>
+<span>|</span>
+<a href="#" class="hover:text-white transition-colors">Política de Cookies</a>
+</div>
+<p>© 2025 El Rancho. Todos los derechos reservados.</p>
+</div>
+</div>
+</footer>
+  </div> <!-- ✅ cierre de container -->
+  </section> 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Menú móvil
+const menuButton = document.getElementById('menuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+menuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Pizza size price handling
+const pizzaSizeSelects = document.querySelectorAll('[data-category="pizzas"] select');
+pizzaSizeSelects.forEach(select => {
+select.addEventListener('change', function() {
+const size = this.value;
+const priceElement = this.closest('.flex').querySelector('.text-primary');
+if (size === '32') priceElement.textContent = '10€';
+if (size === '40') priceElement.textContent = '16€';
+if (size === '45') priceElement.textContent = '19€';
+});
+});
+// Filtro de categorías
+const categoryTabs = document.querySelectorAll('.category-tab');
+const productCards = document.querySelectorAll('.product-card');
+categoryTabs.forEach(tab => {
+tab.addEventListener('click', () => {
+// Actualizar estado activo de las pestañas
+categoryTabs.forEach(t => {
+t.classList.remove('text-primary', 'border-primary');
+t.classList.add('text-gray-500', 'border-transparent');
+});
+tab.classList.remove('text-gray-500', 'border-transparent');
+tab.classList.add('text-primary', 'border-primary');
+const category = tab.getAttribute('data-category');
+// Filtrar productos
+productCards.forEach(card => {
+if (category === 'all' || card.getAttribute('data-category') === category) {
+card.style.display = 'block';
+} else {
+card.style.display = 'none';
+}
+});
+});
+});
+});
+</script>
+  <script>
+async function loadDailyMenu() {
+  // Tu hoja publicada convertida a CSV
+  const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_ajiYPMbh3onFoOg3SdWmtlcrMYaTaU2agLasB8JljPTE16sk_Bq3fmjC8tjAcFdEJivlEe2Th1xU/pub?output=csv';
+  try {
+    const res = await fetch(sheetUrl);
+    if (!res.ok) throw new Error('Error al cargar el menú');
+    const text = await res.text();
+    const lines = text.trim().split('\n');
+    const rows = lines.slice(1).map(line => line.split(','));
+    const container = document.getElementById('daily-menu');
+    
+    container.innerHTML = rows.map(([order, name, desc]) => {
+      let html = `<div class="chalk-text text-2xl">${order}. ${name.trim()}</div>`;
+      if (desc && desc.trim()) {
+        html += `<div class="chalk-text text-lg">${desc.trim()}</div>`;
+      }
+      return html;
+    }).join('');
+  } catch (err) {
+    console.error(err);
+    document.getElementById('daily-menu').innerHTML =
+      '<p class="text-red-500">No se pudo cargar el menú del día.</p>';
+  }
+}
+document.addEventListener('DOMContentLoaded', loadDailyMenu);
+</script>
+  <script>
+// Mapea índices de mes a nombres en español
+const meses = ['enero','febrero','marzo','abril','mayo','junio',
+               'julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('update-date');
+  const hoy = new Date();
+  const day = hoy.getDate();
+  const monthName = meses[hoy.getMonth()];
+  const year = hoy.getFullYear();
+  // Capitaliza la primera letra del mes
+  const mesCapital = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+  el.textContent = `Actualizado: ${day} de ${mesCapital}, ${year}`;
+});
+</script>
+        <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tabs = document.querySelectorAll('.category-tab');
+      const productCards = document.querySelectorAll('.product-card');
+
+      function showCategory(category) {
+        productCards.forEach(card => {
+          if (card.dataset.category === category) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        tabs.forEach(tab => {
+          if (tab.dataset.category === category) {
+            tab.classList.add('text-primary', 'border-primary');
+            tab.classList.remove('text-gray-500', 'border-transparent');
+          } else {
+            tab.classList.remove('text-primary', 'border-primary');
+            tab.classList.add('text-gray-500', 'border-transparent');
+          }
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          const category = this.dataset.category;
+          showCategory(category);
+        });
+      });
+
+      showCategory('pizzas');
+    });
+  </script>
+</body>
+</html>
